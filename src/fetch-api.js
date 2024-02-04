@@ -14,11 +14,11 @@ import axios from 'axios';
         query,
         per_page: 20,
     })
-    try{
+    
         const getQuery = await axios.get(`${baseURL}&${params}`)
         console.log(getQuery.data);
         return getQuery
-    }catch(error){error => console.log(error)}
+    
     
     
   

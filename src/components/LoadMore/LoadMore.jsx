@@ -1,10 +1,10 @@
-// import css from './LoadMore.module.css'
+import css from './LoadMore.module.css'
 
 const LoadMore = ({onClick}) => {
 
     return (
         <>
-            <button onClick={onClick}>Load more</button>
+            <button onClick={onClick} className={css.button}>Load more</button>
         </>
     )
 }

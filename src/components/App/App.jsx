@@ -4,11 +4,9 @@ import searchCardByQuery from '../../fetch-api';
 import { useState, useEffect } from 'react'
 import ImageGallery from '../ImageGallery/ImageGallery'
 import LoadMore from '../LoadMore/LoadMore';
-
-
 import './App.css'
 
-function App() {
+const App = () => {
   const [query, setQuery] = useState('')
   const [totalPages, setTotalPages] = useState(0)
   const [page, setPage] = useState(1)
@@ -17,7 +15,7 @@ function App() {
   const [error, setError] = useState(false);
 
   const searchCard = async (newQuery) => {
-    setQuery(newQuery)
+    setQuery(`${Date.now()}/${newQuery}`)
     setPage(1)
     setPictures([])
     setLoading(false)
@@ -26,7 +24,7 @@ function App() {
   }
 
  const hendelLoadMore = () => {
-  setPage(page + 1)
+  setPage((page) => page + 1)
  }
   
 useEffect(()=> {
@@ -36,13 +34,12 @@ useEffect(()=> {
   async function fetchData () {
   
     try{
+      const getQuery = await searchCardByQuery(query.split('/')[1], page)
       setError(false)
-      setPictures([])
       setLoading(true)
-        const getQuery = await searchCardByQuery(query, page)
-        console.log(getQuery.data);
-        setTotalPages(getQuery.data.total_pages)
-        setPictures([...pictures, ...getQuery.data.results])
+      console.log(getQuery.data);
+      setTotalPages(getQuery.data.total_pages)
+      setPictures((photos) => [...photos, ...getQuery.data.results])
         
     }catch(error){
       setError(true)

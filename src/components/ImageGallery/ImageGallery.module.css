@@ -1,22 +1,17 @@
 .container {
-    background-color: aqua;
-    max-width: 1200px;
+
+    max-width: 1440px;
     margin: 0 auto;
 }
 .list {
+    padding: 0 5px;
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
+    justify-content: space-around;
     list-style: none;
 }
 
-.item{
-    
-}
-
-.image{
-    width: 250px;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+.item {
+    width: calc(1400px / 4 );
 }
