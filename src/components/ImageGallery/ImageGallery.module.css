@@ -1,0 +1,22 @@
+.container {
+    background-color: aqua;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.item{
+    
+}
+
+.image{
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
